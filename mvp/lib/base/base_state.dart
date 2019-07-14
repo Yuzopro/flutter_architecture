@@ -5,11 +5,7 @@ import 'i_base_view.dart';
 
 abstract class BaseState<T extends StatefulWidget, P extends BasePresenter<V>,
     V extends IBaseView> extends State<T> implements IBaseView {
-  String title = "";
-
   P presenter;
-
-  final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
 
   bool isLoading = false;
 
@@ -18,11 +14,6 @@ abstract class BaseState<T extends StatefulWidget, P extends BasePresenter<V>,
   Widget buildBody(BuildContext context);
 
   void initData() {
-    this.title = getTitle();
-  }
-
-  String getTitle() {
-    return "";
   }
 
   @override
@@ -48,30 +39,8 @@ abstract class BaseState<T extends StatefulWidget, P extends BasePresenter<V>,
   @mustCallSuper
   Widget build(BuildContext context) {
     return new Scaffold(
-      key: _scaffoldKey,
-      appBar: title.isEmpty
-          ? null
-          : new AppBar(
-              actions: getActions(),
-              title: new Text(title),
-            ),
       body: buildBody(context),
-      floatingActionButton: buildFloatingActionButton(),
     );
-  }
-
-  Widget buildFloatingActionButton() {
-    return null;
-  }
-
-  List<Widget> getActions() {
-    return null;
-  }
-
-  @override
-  showToast(String message) {
-    _scaffoldKey.currentState
-        .showSnackBar(new SnackBar(content: new Text(message)));
   }
 
   @override

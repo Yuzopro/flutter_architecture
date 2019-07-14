@@ -10,6 +10,9 @@ export 'package:fluttertoast/fluttertoast.dart';
 export 'package:flutter_architecture/util/log_util.dart';
 export 'package:json_annotation/json_annotation.dart';
 export 'package:rxdart/rxdart.dart';
+export 'package:flutter_redux/flutter_redux.dart';
+export 'package:redux/redux.dart';
+
 
 
 

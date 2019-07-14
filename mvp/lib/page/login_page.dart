@@ -151,9 +151,7 @@ class _LoginPageState extends BaseState<LoginPage, LoginPresenter, ILoginView>
         labelText: 'Github账号:',
         suffixIcon: new GestureDetector(
           onTap: () {
-            setState(() {
-              _nameController.clear();
-            });
+            _nameController.clear();
           },
           child: new Icon(_nameController.text.length > 0 ? Icons.clear : null),
         ),

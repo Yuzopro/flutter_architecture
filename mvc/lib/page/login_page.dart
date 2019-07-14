@@ -81,15 +81,7 @@ class _LoginPageState extends State<LoginPage> {
     String name = _nameController.text;
     String password = _passwordController.text;
 
-    setState(() {
-      Con.instance.showLoading();
-    });
-
-    await Con.instance.login(name, password);
-
-    setState(() {
-      Con.instance.hideLoading();
-    });
+    await Con.instance.login(this, name, password);
 
     if (Con.userBean != null) {
       NavigatorUtil.goHome(context, Con.userBean);
@@ -147,9 +139,7 @@ class _LoginPageState extends State<LoginPage> {
         labelText: 'Github账号:',
         suffixIcon: new GestureDetector(
           onTap: () {
-            setState(() {
-              _nameController.clear();
-            });
+            _nameController.clear();
           },
           child: new Icon(_nameController.text.length > 0 ? Icons.clear : null),
         ),

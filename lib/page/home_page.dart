@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_architecture/bean/user_bean.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 class HomePage extends StatelessWidget {
   final UserBean userBean;
@@ -50,14 +51,14 @@ class HomePage extends StatelessWidget {
     return CachedNetworkImage(
       imageUrl: url ?? "",
       placeholder: (context, url) {
-        return Icon(
-          Icons.person,
+        return SpinKitCircle(
+          color: Theme.of(context).primaryColor,
           size: size,
         );
       },
       errorWidget: (context, url, error) {
-        return Icon(
-          Icons.person,
+        return SpinKitCircle(
+          color: Theme.of(context).primaryColor,
           size: size,
         );
       },
