@@ -33,50 +33,50 @@ class LoginPage extends StatelessWidget {
     });
 
     return StreamBuilder(
-        stream: bloc.stream,
-        initialData: initialData(),
-        builder: (BuildContext context,
-            AsyncSnapshot<LoadingBean<LoginBlocBean>> snapshot) {
-          return Scaffold(
-            body: Stack(
-              children: <Widget>[
-                Form(
-                  child: ListView(
-                    padding: EdgeInsets.symmetric(horizontal: 22.0),
-                    children: <Widget>[
-                      SizedBox(
-                        height: kToolbarHeight,
-                      ),
-                      _buildTitle(),
-                      _buildTitleLine(),
-                      SizedBox(height: 70.0),
-                      _buildNameTextField(snapshot.data.data.name),
-                      SizedBox(height: 30.0),
-                      _buildPasswordTextField(
-                          context, snapshot.data.data, bloc),
-                      SizedBox(height: 60.0),
-                      _buildLoginButton(context, snapshot.data.data, bloc),
-                    ],
-                  ),
+      stream: bloc.stream,
+      initialData: initialData(),
+      builder: (BuildContext context,
+          AsyncSnapshot<LoadingBean<LoginBlocBean>> snapshot) {
+        return Scaffold(
+          body: Stack(
+            children: <Widget>[
+              Form(
+                child: ListView(
+                  padding: EdgeInsets.symmetric(horizontal: 22.0),
+                  children: <Widget>[
+                    SizedBox(
+                      height: kToolbarHeight,
+                    ),
+                    _buildTitle(),
+                    _buildTitleLine(),
+                    SizedBox(height: 70.0),
+                    _buildNameTextField(snapshot.data.data.name),
+                    SizedBox(height: 30.0),
+                    _buildPasswordTextField(context, snapshot.data.data, bloc),
+                    SizedBox(height: 60.0),
+                    _buildLoginButton(context, snapshot.data.data, bloc),
+                  ],
                 ),
-                Offstage(
-                  offstage: !_isLoading(bloc),
-                  child: new Container(
-                    width: MediaQuery.of(context).size.width,
-                    height: MediaQuery.of(context).size.height,
-                    color: Colors.black54,
-                    child: new Center(
-                      child: SpinKitCircle(
-                        color: Theme.of(context).primaryColor,
-                        size: 25.0,
-                      ),
+              ),
+              Offstage(
+                offstage: !_isLoading(bloc),
+                child: new Container(
+                  width: MediaQuery.of(context).size.width,
+                  height: MediaQuery.of(context).size.height,
+                  color: Colors.black54,
+                  child: new Center(
+                    child: SpinKitCircle(
+                      color: Theme.of(context).primaryColor,
+                      size: 25.0,
                     ),
                   ),
                 ),
-              ],
-            ),
-          );
-        });
+              ),
+            ],
+          ),
+        );
+      },
+    );
   }
 
   _isLoading(LoginBloc bloc) {

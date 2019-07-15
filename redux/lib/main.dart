@@ -29,7 +29,7 @@ class ReduxApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return new StoreProvider<AppState>(
+    return StoreProvider<AppState>(
       store: store,
       child: StoreConnector<AppState, _ViewModel>(
         converter: _ViewModel.fromStore,

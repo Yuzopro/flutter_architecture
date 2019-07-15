@@ -29,16 +29,22 @@ class LoginPageContent extends StatefulWidget {
 }
 
 class _LoginPageContentState extends State<LoginPageContent> {
-  TextEditingController _nameController;
-  TextEditingController _passwordController;
+  final TextEditingController _nameController = new TextEditingController();
+  final TextEditingController _passwordController = new TextEditingController();
 
   bool _obscureText = true;
 
   @override
   void initState() {
     super.initState();
-    _nameController = new TextEditingController();
-    _passwordController = new TextEditingController();
+    _nameController.addListener(() {
+      setState(() {
+      });
+    });
+    _passwordController.addListener(() {
+      setState(() {
+      });
+    });
   }
 
   @override
